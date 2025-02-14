@@ -2,7 +2,7 @@
 
 ##  Uso de Black para Formateo de Código en Django
 
-En este proyecto, aplicamos `black`, una herramienta de formateo de código para Python, con el objetivo de mejorar la legibilidad y mantener un estándar de codificación limpio y consistente.
+En el tutorial 2, aplicamos `black`, una herramienta de formateo de código para Python, con el objetivo de mejorar la legibilidad y mantener un estándar de codificación limpio y consistente.
 
 ---
 

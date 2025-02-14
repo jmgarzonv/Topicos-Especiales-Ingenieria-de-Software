@@ -12,7 +12,7 @@ Black es una herramienta que formatea automáticamente el código Python según 
 ---
 
 ##  **Instalación de Black**
-Si aún no lo tienes instalado, puedes agregarlo a tu entorno ejecutando:
+Se puede instalar ejecutando el siguiente comando:
 
 ```bash
 python -m pip install black

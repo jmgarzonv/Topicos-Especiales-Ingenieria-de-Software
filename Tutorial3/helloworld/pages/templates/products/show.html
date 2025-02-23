@@ -1,0 +1,44 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block header_title %}{{ subtitle }}{% endblock %}
+
+{% block content %}
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="https://static.djangoproject.com/img/logos/django-logo-positive.svg" class="img-fluid rounded-start">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+
+        <!-- Mostrar precio con color si es mayor a 2000 -->
+        {% if product.price > 2000 %}
+          <p class="card-text" style="color: red;"><strong>${{ product.price }}</strong></p>
+        {% else %}
+          <p class="card-text"><strong>${{ product.price }}</strong></p>
+        {% endif %}
+        <h3>Comments</h3>
+        {% for comment in product.comment_set.all %}
+          <div class="card my-2">
+              <div class="card-body">
+                  <p>{{ comment.description }}</p>
+                  <small class="text-muted">Posted on {{ comment.created_at }}</small>
+              </div>
+          </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+        <h4>Add a comment</h4>
+          <form method="POST" action="{% url 'show' product.id %}">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <button type="submit" class="btn btn-primary">Post Comment</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

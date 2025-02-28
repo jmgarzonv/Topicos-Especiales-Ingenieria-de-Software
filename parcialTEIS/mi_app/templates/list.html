@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vuelos</title>
+    <style>
+        .nacional-price { color: blue; }
+        .internacional-name { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Lista de Vuelos</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.id }}</td>
+                    <td class="{% if flight.flight_type == 'Internacional' %}internacional-name{% endif %}">
+                        {{ flight.name }}
+                    </td>
+                    <td>{{ flight.flight_type }}</td>
+                    <td class="{% if flight.flight_type == 'Nacional' %}nacional-price{% endif %}">
+                        ${{ flight.price }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'home' %}">Volver al inicio</a>
+</body>
+</html>
